@@ -8,6 +8,7 @@
     <link rel="manifest" href="/static/manifest.json">
     <meta name="theme-color" content="#00b4d8">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
 </head>
 <body>
 
@@ -451,6 +452,11 @@ function showTab(name, btn) {
     btn.classList.add('active');
 }
 
+var zoomConfig = {
+    pan: { enabled: true, mode: 'x' },
+    zoom: { wheel: { enabled: false }, pinch: { enabled: false }, drag: { enabled: false } }
+};
+
 window.onload = function() {
 
     fetch('/api/cholera-by-year')
@@ -467,7 +473,7 @@ window.onload = function() {
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { labels: { color: '#ccc' } } },
+                    plugins: { legend: { labels: { color: '#ccc' } }, zoom: zoomConfig },
                     scales: {
                         x: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } },
                         y: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } }
@@ -494,7 +500,7 @@ window.onload = function() {
         options: {
             indexAxis: 'y',
             responsive: true,
-            plugins: { legend: { display: false } },
+            plugins: { legend: { display: false }, zoom: zoomConfig },
             scales: {
                 x: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } },
                 y: { ticks: { color: '#ccc' }, grid: { color: '#1e3245' } }
@@ -516,7 +522,7 @@ window.onload = function() {
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { labels: { color: '#ccc' } } },
+                    plugins: { legend: { labels: { color: '#ccc' } }, zoom: zoomConfig },
                     scales: {
                         x: { ticks: { color: '#aaa', maxTicksLimit: 12 }, grid: { color: '#1e3245' } },
                         y: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } }
@@ -560,7 +566,7 @@ window.onload = function() {
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { labels: { color: '#ccc' } } },
+                    plugins: { legend: { labels: { color: '#ccc' } }, zoom: zoomConfig },
                     scales: {
                         x: { ticks: { color: '#aaa', maxTicksLimit: 16 }, grid: { color: '#1e3245' } },
                         y: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } }
@@ -600,7 +606,7 @@ window.onload = function() {
         },
         options: {
             responsive: true,
-            plugins: { legend: { labels: { color: '#ccc' } } },
+            plugins: { legend: { labels: { color: '#ccc' } }, zoom: zoomConfig },
             scales: {
                 x: { ticks: { color: '#aaa', maxTicksLimit: 12 }, grid: { color: '#1e3245' } },
                 y: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } }
@@ -638,7 +644,7 @@ window.onload = function() {
                 },
                 options: {
                     responsive: true,
-                    plugins: { legend: { labels: { color: '#ccc' } } },
+                    plugins: { legend: { labels: { color: '#ccc' } }, zoom: zoomConfig },
                     scales: {
                         x: { ticks: { color: '#aaa' }, grid: { color: '#1e3245' } },
                         y: { ticks: { color: '#e74c3c' }, grid: { color: '#1e3245' }, position: 'left', title: { display: true, text: 'Cases', color: '#e74c3c' } },
